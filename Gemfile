@@ -13,10 +13,16 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  gem 'rswag'
 end
 
 group :development do
   gem 'listen', '~> 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'rspec'
 end
