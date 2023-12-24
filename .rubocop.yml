@@ -1,0 +1,11 @@
+AllCops:
+  Exclude:
+    - 'db/**/*' # Исключение для файлов в директории db
+    - 'config/**/*' # Исключение для файлов в директории config
+    - 'bin/**/*'
+
+Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
