@@ -28,7 +28,13 @@ module WeatherApi
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    if %w[development test].include? ENV['RAILS_ENV']
+      Dotenv::Railtie.load
+    end
 
+    config.city_code = '294021'
+    config.foreign_weather_api_domain = 'http://dataservice.accuweather.com'
+    config.foreign_weather_api_key = ENV['API_KEY']
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
