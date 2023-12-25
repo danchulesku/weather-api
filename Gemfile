@@ -18,6 +18,7 @@ group :development, :test do
   gem 'rswag'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  gem 'timecop', '~> 0.9.8'
 end
 
 group :development do
@@ -27,6 +28,10 @@ group :development do
 end
 
 group :test do
+  gem 'database_cleaner'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'vcr'
+  gem 'webmock'
 end
+
