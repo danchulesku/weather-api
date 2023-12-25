@@ -6,6 +6,7 @@ run_from_console = defined?(IRB)
 
 unless run_from_console
   scheduler.in '1s' do
-    Weather::Collect::Last24HoursJob.perform_now
+    Weather::CollectJob.perform_now('Last24Hours')
+    Weather::CollectJob.perform_now('CurrentHour')
   end
 end
