@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://dataservice.accuweather.com/currentconditions/v1/294021/historical/24?apikey=IQR2xbe0tQ8NE5spFJAg2TIG05VvTBkJ
+    uri: http://dataservice.accuweather.com/currentconditions/v1/294021/historical/24?apikey=valid_key
     body:
       encoding: US-ASCII
       string: ''

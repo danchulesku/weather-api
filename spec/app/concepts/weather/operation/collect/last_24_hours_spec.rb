@@ -26,7 +26,7 @@ describe Weather::Operation::Collect::Last24Hours, type: :operation do
         {
           city_code: Rails.configuration.city_code,
           api_domain: Rails.configuration.foreign_weather_api_domain,
-          api_key: Rails.configuration.foreign_weather_api_key
+          api_key: 'valid_key'
         }
       end
 
@@ -52,7 +52,7 @@ describe Weather::Operation::Collect::Last24Hours, type: :operation do
     let(:ctx) { { temperature_24_hours: data_from_api } }
     let(:api_domain) { Rails.configuration.foreign_weather_api_domain }
     let(:url) { "#{api_domain}/currentconditions/v1/#{Rails.configuration.city_code}/historical/24" }
-    let(:api_query) { { apikey: Rails.configuration.foreign_weather_api_key } }
+    let(:api_query) { { apikey: 'valid_key' } }
     let(:freeze_time) { Time.now }
     let(:data_from_api) do
       VCR.use_cassette('last24_hours/successful_request') { HTTParty.get(url, query: api_query).parsed_response }
