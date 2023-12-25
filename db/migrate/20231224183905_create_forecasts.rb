@@ -1,6 +1,6 @@
-class CreateWeathers < ActiveRecord::Migration[6.0]
+class CreateForecasts < ActiveRecord::Migration[6.0]
   def change
-    create_table :weathers do |t|
+    create_table :forecasts do |t|
       t.float :temperature, null: false
       t.datetime :observation_time, null: false
 

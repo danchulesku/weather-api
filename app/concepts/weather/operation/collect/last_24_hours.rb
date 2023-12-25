@@ -1,4 +1,4 @@
-module Forecast
+module Weather
   module Operation
     module Collect
       class Last24Hours < Trailblazer::Operation
@@ -38,7 +38,7 @@ module Forecast
         end
 
         def save(ctx, _params)
-          Weather.insert_all(ctx[:temperature_24_hours])
+          Forecast.insert_all(ctx[:temperature_24_hours])
         rescue StandardError
           ctx[:error] = 'Something went wrong with API DATA'
           false

@@ -1,4 +1,4 @@
-describe Forecast::Collect::Last24HoursJob, type: :job do
+describe Weather::Collect::Last24HoursJob, type: :job do
   let(:city_code) { 'your_city_code' }
   let(:api_domain) { 'your_api_domain' }
   let(:api_key) { 'your_api_key' }
@@ -10,7 +10,7 @@ describe Forecast::Collect::Last24HoursJob, type: :job do
   end
 
   it '#perform' do
-    expect(Forecast::Operation::Collect::Last24Hours).to receive(:call).with(
+    expect(Weather::Operation::Collect::Last24Hours).to receive(:call).with(
       {
         city_code:,
         api_domain:,

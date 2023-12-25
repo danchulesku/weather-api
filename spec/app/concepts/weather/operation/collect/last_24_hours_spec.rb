@@ -1,4 +1,4 @@
-describe Forecast::Operation::Collect::Last24Hours, type: :operation do
+describe Weather::Operation::Collect::Last24Hours, type: :operation do
   let(:operation) { described_class.new }
   let(:ctx) { {} }
 

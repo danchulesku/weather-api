@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2023_12_24_183905) do
 
-  create_table "weathers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "forecasts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.float "temperature", null: false
     t.datetime "observation_time", null: false
     t.datetime "created_at", precision: 6, null: false
