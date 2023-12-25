@@ -28,6 +28,32 @@ RSpec.configure do |config|
           }
         }
       }
+    },
+
+    'historical.openapi.yaml' => {
+      openapi: '3.0.1',
+      servers: Rswag::Metadata.servers,
+      info: Rswag::Metadata.info,
+      components: {
+        schemas: {
+          Weather: {
+            Historical: {
+              last_24_hours: {
+                response: Schemas::Weather::Historical::Last24Hours.response_body
+              },
+              maximum: {
+                response: Schemas::Weather::Historical::Maximum.response_body
+              },
+              minimum: {
+                response: Schemas::Weather::Historical::Minimum.response_body
+              },
+              average: {
+                response: Schemas::Weather::Historical::Average.response_body
+              }
+            }
+          }
+        }
+      }
     }
   }
 
