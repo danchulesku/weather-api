@@ -87,12 +87,20 @@ describe Weather::Operation::Collect::Last24Hours, type: :operation do
       let(:data_sample) { [{ temperature: 2.3, observation_time: Time.now, created_at: Time.now, updated_at: Time.now }] }
 
       it { is_expected.to be_truthy }
+
+      it 'creates new forecast' do
+        expect { subject }.to change { Forecast.count }.by(1)
+      end
     end
 
     context 'WHEN data is NOT valid' do
       let(:data_sample) { [{ temperature: nil, observation_time: Time.now, created_at: nil, updated_at: Time.now }] }
 
       it { is_expected.to be false }
+
+      it 'does NOT create new forecast' do
+        expect { subject }.not_to(change { Forecast.count })
+      end
     end
   end
 end
