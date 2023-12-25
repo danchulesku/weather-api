@@ -2,7 +2,7 @@ describe Weather::Operation::Collect::Last24Hours, type: :operation do
   let(:operation) { described_class.new }
   let(:ctx) { {} }
 
-  describe '#validate' do
+  describe 'contracts' do
     subject { operation.send(:validate, ctx, params) }
 
     context 'WHEN params are valid' do

@@ -9,6 +9,7 @@ gem 'mysql2', '>= 0.4.4'
 gem 'psych', '< 4'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.6', '>= 6.0.6.1'
+gem 'reform-rails'
 gem 'rufus-scheduler'
 gem 'trailblazer-rails'
 
