@@ -10,5 +10,7 @@ unless run_from_console
     Weather::CollectJob.perform_now('CurrentHour')
   end
 
-  # TODO: каждый час собирай данные по погоде
+  scheduler.every '1hour' do
+    Weather::CollectJob.perform_now('CurrentHour')
+  end
 end
