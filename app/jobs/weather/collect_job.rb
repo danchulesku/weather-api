@@ -1,7 +1,6 @@
 module Weather
   class CollectJob < ApplicationJob
     queue_as :default
-    # TODO: замени на delayd_job
 
     def perform(collect_time_const)
       collect_weather_operation = Object.const_get "Weather::Operation::Collect::#{collect_time_const}"
