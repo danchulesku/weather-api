@@ -1,0 +1,64 @@
+---
+openapi: 3.0.1
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
+info:
+  title: Weather API
+  version: v1
+components:
+  schemas:
+    Weather:
+      current:
+        response:
+          body:
+            type: object
+            properties:
+              temperature:
+                type: number
+      by_time:
+        response:
+          body:
+            type: object
+            properties:
+              temperature:
+                type: number
+          error:
+            type: object
+            properties:
+              error:
+                type: string
+paths:
+  "/weather/current":
+    get:
+      summary: show current temperature
+      responses:
+        '200':
+          description: show current temperature
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Weather/current/response/body"
+  "/weather/by_time":
+    get:
+      summary: show nearest temperature in day by timestamp
+      parameters:
+      - name: timestamp
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: show nearest temperature in day by timestamp
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Weather/by_time/response/body"
+        '404':
+          description: render 404 with nil
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Weather/by_time/response/error"

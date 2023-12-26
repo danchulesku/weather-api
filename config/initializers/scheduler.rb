@@ -9,4 +9,6 @@ unless run_from_console
     Weather::CollectJob.perform_now('Last24Hours')
     Weather::CollectJob.perform_now('CurrentHour')
   end
+
+  # TODO: каждый час собирай данные по погоде
 end

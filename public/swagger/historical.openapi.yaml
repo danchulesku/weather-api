@@ -1,0 +1,91 @@
+---
+openapi: 3.0.1
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
+info:
+  title: Weather API
+  version: v1
+components:
+  schemas:
+    Weather:
+      Historical:
+        last_24_hours:
+          response:
+            body:
+              type: object
+              properties:
+                temps:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      temperature:
+                        type: number
+                      observation_time:
+                        type: string
+                        format: date_time
+        maximum:
+          response:
+            body:
+              type: object
+              properties:
+                max:
+                  type: number
+        minimum:
+          response:
+            body:
+              type: object
+              properties:
+                min:
+                  type: number
+        average:
+          response:
+            body:
+              type: object
+              properties:
+                avg:
+                  type: number
+paths:
+  "/weather/historical":
+    get:
+      summary: show last 24 hours temperature per hour
+      responses:
+        '200':
+          description: show last 24 hours temperature
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Weather/Historical/last_24_hours/response/body"
+  "/weather/historical/max":
+    get:
+      summary: show maximum temp for last 24 hours
+      responses:
+        '200':
+          description: show maximum temperature for last 24 hours
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Weather/Historical/maximum/response/body"
+  "/weather/historical/min":
+    get:
+      summary: show minimum temp for last 24 hours
+      responses:
+        '200':
+          description: show minimum temperature for last 24 hours
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Weather/Historical/minimum/response/body"
+  "/weather/historical/avg":
+    get:
+      summary: show average temp for last 24 hours
+      responses:
+        '200':
+          description: show average temperature for last 24 hours
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Weather/Historical/minimum/response/body"
