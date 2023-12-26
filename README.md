@@ -1,24 +1,51 @@
-# README
+# Weather API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Это API по которому можно получить прогноз погоды(хардкод Москвы) из AccuWeather
 
-Things you may want to cover:
+Доступные эндпоинты можно глянуть по пути `/api-docs`
 
-* Ruby version
+## Основная логика работы
+Дабы не слать каждый раз запрос на внешний API при обращении к этому API
+я сделал следующее:
 
-* System dependencies
+При запуске приложения идет запуск jobs с помощью rufus, через него запрос в внешний апи 
+на получение данных за последние 24 часа и также текущий час. Все это сохраняем в БД. Теперь
+приложение обладает в БД актуальными данными для любого эндпоинта и не обращается в внешнюю среду.
+С помощью rufus каждый час идет запрос погоды с внешнего апи, дабы актуализировать данные. Юзер напрямую
+через эндпоинты никак с внешним апи не взаимодействует
 
-* Configuration
+## Запуск проекта:
 
-* Database creation
+Независимо от способа запуска:
+1) Скопируйте репозиторий: `git clone <app_url>`
+2) Получите API ключ AccuWeather на странице https://developer.accuweather.com/user/me/apps
+3) 
+4) Создайте файл `.env` в корневой директории проекта и заведите там следующую константу:
+```shell
+1 API_KEY=YOUR_API_KEY
+2
+```
 
-* Database initialization
+### Через докер:
+1) `docker-compose build`
+2) `docker-compose up`
 
-* How to run the test suite
+Готово :)
+### Локальный:
+Вам надо иметь установленный Ruby 3.1.2, Rails 6, mysql, redis
 
-* Services (job queues, cache servers, search engines, etc.)
+1) убедитесь что у вас запущен redis сервис
+2) Запустите исполнитель фоновых задач:
+```shell
+bin/delayed_job start
+```
 
-* Deployment instructions
+3) В другой вкладке консоли
+```shell
+bundle install
+bundle exec rails db:create
+bundle exec rails db:migrate
+bundle exec rails s
+```
 
-* ...
+Готово :)
