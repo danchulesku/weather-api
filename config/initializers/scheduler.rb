@@ -13,4 +13,8 @@ unless run_from_console
   scheduler.every '1hour' do
     Weather::CollectJob.perform_later('CurrentHour')
   end
+
+  scheduler.every '3day' do
+    Weather::DeleteOldData.perform_later
+  end
 end
