@@ -191,6 +191,7 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.8.1)
     reform (2.6.2)
       disposable (>= 0.5.0, < 1.0.0)
       representable (>= 3.1.1, < 4)
@@ -349,6 +350,7 @@ DEPENDENCIES
   psych (< 4)
   puma (~> 4.1)
   rails (~> 6.0.6, >= 6.0.6.1)
+  redis
   reform-rails
   rspec
   rspec-rails

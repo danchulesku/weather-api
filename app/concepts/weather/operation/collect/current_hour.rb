@@ -5,7 +5,7 @@ module Weather
         step :validate
         step :fetch_data
         step :save
-        left :handle_errors
+        left Shared::Operations::HandleErrors
 
         private
 
@@ -35,11 +35,6 @@ module Weather
         rescue StandardError
           ctx[:error] = 'Something went wrong with API DATA'
           false
-        end
-
-        def handle_errors(ctx, _params)
-          puts "ERROR: #{ctx[:error]}"
-          exit!
         end
       end
     end
