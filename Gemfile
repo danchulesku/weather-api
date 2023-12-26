@@ -19,6 +19,7 @@ group :development, :test do
   gem 'rswag'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  gem 'shoulda-matchers'
   gem 'timecop', '~> 0.9.8'
 end
 
