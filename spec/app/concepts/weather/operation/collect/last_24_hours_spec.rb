@@ -72,7 +72,9 @@ describe Weather::Operation::Collect::Last24Hours, type: :operation do
     let(:ctx) { { temperature_24_hours: data_sample } }
 
     context 'WHEN data is valid' do
-      let(:data_sample) { [{ temperature: 2.3, observation_time: Time.now, created_at: Time.now, updated_at: Time.now }] }
+      let(:data_sample) do
+        [{ temperature: 2.3, observation_time: Time.now, created_at: Time.now, updated_at: Time.now }]
+      end
 
       it { is_expected.to be_truthy }
 

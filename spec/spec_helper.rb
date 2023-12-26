@@ -19,10 +19,10 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   # Configure VCR gem
-  VCR.configure do |config|
-    config.cassette_library_dir = 'spec/cassettes'
-    config.hook_into :webmock
-    config.configure_rspec_metadata!
+  VCR.configure do |vcr_config|
+    vcr_config.cassette_library_dir = 'spec/cassettes'
+    vcr_config.hook_into :webmock
+    vcr_config.configure_rspec_metadata!
   end
 
   config.expect_with :rspec do |expectations|
