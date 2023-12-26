@@ -36,9 +36,11 @@ module WeatherApi
     config.foreign_weather_api_domain = 'http://dataservice.accuweather.com'
     config.foreign_weather_api_key = ENV['API_KEY']
     config.active_job.queue_adapter = :delayed_job
-    config.cache_store = :redis_store, 'redis://localhost:6379/0/cache', { expires_in: 90.minutes }
-    config.session_store :redis_store, servers: 'redis://localhost:6379/0/session', expire_after: 90.minutes
-    redis = Redis.new(url: 'redis://localhost:6379')
+
+    config.redis_url = ENV['REDIS_URL'] || 'redis://localhost:6379'
+    config.cache_store = :redis_cache_store, { url: config.redis_url }
+    config.session_store :redis_store, servers: "#{config.redis_url}/session", expire_after: 90.minutes
+    redis = Redis.new(url: config.redis_url)
     redis.flushdb
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.

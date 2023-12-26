@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
   end
 
   def check_api_status
-    redis = Redis.new(url: Shared::Operations::HandleErrors::REDIS_URL)
+    redis = Redis.new(url: Rails.application.config.redis_url)
     error = redis.get('api-error')
     render json: { error: }, status: :bad_request if error
   end

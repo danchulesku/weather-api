@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bin/delayed_job start && rails s -b '0.0.0.0'"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+    environment:
+      REDIS_URL: "redis://redis:6379/0"
+      DB_HOST: weather_api-db-1
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+      MYSQL_DATABASE: weather_api_development
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+
+volumes:
+  mysql_data:
+
