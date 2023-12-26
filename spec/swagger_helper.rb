@@ -54,6 +54,23 @@ RSpec.configure do |config|
           }
         }
       }
+    },
+    'weather.openapi.yaml' => {
+      openapi: '3.0.1',
+      servers: Rswag::Metadata.servers,
+      info: Rswag::Metadata.info,
+      components: {
+        schemas: {
+          Weather: {
+            current: {
+              response: Schemas::Weather::Current.response_body
+            },
+            by_time: {
+              response: Schemas::Weather::ByTime.response_body
+            }
+          }
+        }
+      }
     }
   }
 
