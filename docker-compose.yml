@@ -13,7 +13,7 @@ services:
       - redis
     environment:
       REDIS_URL: "redis://redis:6379/0"
-      DB_HOST: weather_api-db-1
+      DB_HOST: weather-api-db-1
 
   db:
     image: mysql:latest

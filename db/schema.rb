@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2023_12_26_143306) do
 
-  create_table "delayed_jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "delayed_jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
     t.integer "attempts", default: 0, null: false
     t.text "handler", null: false
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2023_12_26_143306) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-  create_table "forecasts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "forecasts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.float "temperature", null: false
     t.datetime "observation_time", null: false
     t.datetime "created_at", precision: 6, null: false
