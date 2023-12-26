@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'weather', swagger_doc: 'weather.openapi.yaml', type: :request do
-  let!(:forecast) { Forecast.create(temperature: 10, observation_time: Time.now - 3.day) }
+  let!(:forecast) { create :forecast, temperature: 10, observation_time: Time.now - 3.days }
 
   path '/weather/current' do
     get('show current temperature') do

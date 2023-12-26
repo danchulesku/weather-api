@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 describe 'historical weather', swagger_doc: 'historical.openapi.yaml', type: :request do
-  let!(:forecast) { Forecast.create(temperature: 10, observation_time: Time.now) }
+  let!(:forecast) { create :forecast, temperature: 10, observation_time: Time.now }
 
   path '/weather/historical' do
     get('show last 24 temperature per hour') do
