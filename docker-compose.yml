@@ -17,7 +17,7 @@ services:
 
   delayed_job:
     build: .
-    command: bin/delayed_job
+    command: bash -c "bin/delayed_job start && tail -f /dev/null"
     depends_on:
       - web
     volumes:
